@@ -10,7 +10,6 @@ if len(sys.argv) > 3:
     passwd = sys.argv[2]
     db_name = sys.argv[3]
     db = MySQLdb.connect(host="localhost", 
-                         port=3306,
                          user=user_name,
                          passwd=passwd,
                          db=db_name)
