@@ -5,7 +5,7 @@ import MySQLdb
 from sys import argv
 
 if __name__ == "__main__" and len(argv) == 4:
-    db = MySQLdb.connect(host="localhost", user=argv[1], passwd=argv[2], db=argv[3])
+    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
     cur = db.cursor()
     cur.execute("SELECT * FROM states ORDER BY id ASC" )
     rows = cur.fetchall()
