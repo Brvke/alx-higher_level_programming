@@ -9,12 +9,12 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         q = sys.argv[1]
 
-    res = requests.post("http://0.0.0.0:5000/search_user", data={"q": q})
+    response = requests.post("http://0.0.0.0:5000/search_user", data={"q": q})
 
-    res_json = res.json()
-    if res_json == {}:
+    res_json = response.json()
+    if response_json == {}:
         print("No result")
-    elif res_json.get("id") is None or res_json.get("name") is None:
+    elif response_json.get("id") is None or response_json.get("name") is None:
         print("Not a valid JSON")
     else:
-        print(f"[{res_json.get('id')}] {res_json.get('name')}")
+        print(f"[{response_json.get('id')}] {response_json.get('name')}")

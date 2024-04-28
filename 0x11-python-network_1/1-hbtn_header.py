@@ -4,8 +4,11 @@ import sys
 import urllib.request
 
 
-if len(sys.argv) == 2:
-    reqst = urllib.request.Request(sys.argv[1])
-    with urllib.request.urlopen(reqst) as url:
-        header_dict = url.getheader('X-Request-Id')
-        print(header_dict)
+if __name__ == '__main__':
+    url = sys.argv[1]
+
+    reqs = urllib.request.Request(url)
+
+    with urllib.request.urlopen(reqs) as response:
+        headers = response.info()
+        x_request_id = headers.get('X-Request-Id')

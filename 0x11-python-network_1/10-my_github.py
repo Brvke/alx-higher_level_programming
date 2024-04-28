@@ -7,13 +7,12 @@ if __name__ == "__main__":
     import sys
 
     username = sys.argv[1]
-    pat = sys.argv[2]
-
-    res = requests.get(
+    passw = sys.argv[2]
+    headers = {"Authorization": f"Bearer {pat}"}
+    response = requests.get(
         f"https://api.github.com/users/{username}",
-        headers={"Authorization": f"Bearer {pat}"})
-    res_message = res.json().get("message")
-    if res_message and res_message == "Bad credentials":
-        print("None")
+        headers=headers)
+    if response.status_code == 200:
+        print(f"Your GitHub ID: {response.json(['id'])}")
     else:
-        print(res.json().get("id"))
+        print(f"Error: HTTP status code {response.status_code}")
