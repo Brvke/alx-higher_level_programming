@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     response = requests.post("http://0.0.0.0:5000/search_user", data={"q": q})
 
-    res_json = response.json()
+    response_json = response.json()
     if response_json == {}:
         print("No result")
     elif response_json.get("id") is None or response_json.get("name") is None:
